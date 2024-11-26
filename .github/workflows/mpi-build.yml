@@ -1,0 +1,42 @@
+name: MPI Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: openmpi:4.1.1
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        apt-get update
+        apt-get install -y build-essential
+
+    - name: Build MPI program
+      run: |
+        mpic++ -o mpi_program code.cpp
+
+    - name: Run MPI program
+      run: |
+        mpirun -np 4 ./mpi_program
+
+    - name: Check output
+      run: |
+        if [ -f sequences.txt ]; then
+          echo "Output file sequences.txt exists."
+        else
+          echo "Output file sequences.txt does not exist."
+          exit 1
+        fi
