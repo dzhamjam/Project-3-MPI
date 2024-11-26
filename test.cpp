@@ -2,7 +2,7 @@
 using namespace std;
 
 
-// Тест 1: Начальное значение 0 
+// Тест 1: Базовое
 TEST(ComputeSequenceTest, Ranges) {
     auto result = compute_sequence(3.0, 0.1, 5);
     std::vector<double> expected = { 0.1, 0.27, 0.5913, 0.72499, 0.598138, 0.72111 };
@@ -20,7 +20,7 @@ TEST(ComputeSequenceTest, ZeroInitialValue) {
     }
 }
 
-// Тест 3
+// Тест 3: Максимальный шаг
 TEST(ComputeSequenceTest, MaxSteps) {
     auto result = compute_sequence(0.5, 0.1, 10);
     EXPECT_NEAR(result[0], 0.1, 1e-2); // Проверяем первое значение  
