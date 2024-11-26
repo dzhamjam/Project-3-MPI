@@ -1,17 +1,8 @@
-#include <gtest/gtest.h>  
-#include <vector>  
+#include "pch.h"
+using namespace std;
 
-// Функция, которую мы хотим протестировать  
-std::vector<double> compute_sequence(double r, double x0, int steps) {
-    std::vector<double> sequence(steps + 1);
-    sequence[0] = x0;
-    for (int n = 0; n < steps; ++n) {
-        sequence[n + 1] = r * sequence[n] * (1 - sequence[n]);
-    }
-    return sequence;
-}
 
-// Тест 1: Начальное значение 0 
+// Тест 1: базовый
 TEST(ComputeSequenceTest, Ranges) {
     auto result = compute_sequence(3.0, 0.1, 5);
     std::vector<double> expected = { 0.1, 0.27, 0.5913, 0.72499, 0.598138, 0.72111 };
@@ -29,7 +20,7 @@ TEST(ComputeSequenceTest, ZeroInitialValue) {
     }
 }
 
-// Тест 3
+// Тест 3: Увеличиваем кол-во шагов
 TEST(ComputeSequenceTest, MaxSteps) {
     auto result = compute_sequence(0.5, 0.1, 10);
     EXPECT_NEAR(result[0], 0.1, 1e-2); // Проверяем первое значение  
