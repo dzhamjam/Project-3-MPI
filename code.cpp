@@ -45,7 +45,6 @@ int main(int argc, char* argv[]) {
         local_sequences.push_back(compute_sequence(r, x0, steps));
     }
 
-    // Сбор всех результатов у процесса с рангом 0
     std::vector<std::vector<double>> all_sequences;
     if (rank == 0) {
         all_sequences.resize(num_r_values);
