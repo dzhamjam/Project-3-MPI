@@ -36,7 +36,7 @@ jobs:
 
     - name: Run MPI program
       run: |
-        mpirun -np 4 ./mpi_program
+        mpirun --oversubscribe -np 4 ./mpi_program
 
     - name: Check output
       run: |
