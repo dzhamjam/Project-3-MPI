@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: openmpi:4.1.1
+      image: mpich/mpich:latest
 
     steps:
     - name: Checkout repository
