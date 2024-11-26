@@ -12,17 +12,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    container:
-      image: mpich/mpich:latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Install dependencies
       run: |
-        apt-get update
-        apt-get install -y build-essential
+        sudo apt-get update
+        sudo apt-get install -y build-essential openmpi-bin openmpi-common libopenmpi-dev
 
     - name: Build MPI program
       run: |
