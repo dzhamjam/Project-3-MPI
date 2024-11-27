@@ -20,7 +20,7 @@ TEST(ComputeSequenceTest, ZeroInitialValue) {
     }
 }
 
-// Тест 3: Максимальный шаг
+// Тест 3
 TEST(ComputeSequenceTest, MaxSteps) {
     auto result = compute_sequence(0.5, 0.1, 10);
     EXPECT_NEAR(result[0], 0.1, 1e-2); // Проверяем первое значение  
